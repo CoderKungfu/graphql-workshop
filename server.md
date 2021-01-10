@@ -43,3 +43,70 @@
       }
     };
     ```
+
+6. Try to make this GraphQL Query through the Graphiql client in the browser panel:
+
+    ```GraphQL
+    {
+      books{
+        title
+        author
+      }
+    }
+    ```
+
+## Enhancement
+
+Let's enhance the schema to display the authors as a new `Author` type and as a list of Authors.
+
+1. Update the `typeDefs` to include the new `Author` type:
+
+    ```javascript
+    const typeDefs = gql`
+      type Author {
+        name: String
+      }
+    
+      type Book {
+        title: String
+        author: [Author]
+      }
+    
+      type Query {
+        books: [Book]
+        hello: String
+      }
+    `;
+    ```
+
+2. Update the `books` database.
+
+    ```javascript
+    const books = [
+      {
+        title: "The Awakening",
+        author: [{ name: "Kate Chopin" }]
+      },
+      {
+        title: "City of Glass",
+        author: [{ name: "Paul Auster" }]
+      },
+      {
+        title: "Harry Potter and the Philisopher's Stone",
+        author: [{ name: "J.K. Rowling" }]
+      }
+    ];
+    ```
+
+3. Reload the Graphiql client in the browser panel and try to make this GraphQL query:
+
+    ```GraphQL
+    {
+      books{
+        title
+        author {
+          name
+        }
+      }
+    }
+    ```

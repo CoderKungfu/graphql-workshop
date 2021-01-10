@@ -6,5 +6,6 @@
 
 ## Exercises
 
+- [Let's build our own GraphQL Schema](./schema.md)
 - [Writing our own GraphQL Client in React](./client.md)
 - [Writing our own GraphQL Server](./server.md)
